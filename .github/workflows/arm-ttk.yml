@@ -8,15 +8,12 @@ on:
     branches: [ main ]
 
 jobs:
-  armttk:
+  validate-module-files-with-armttk:
     name: ARM TTK Review
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - uses: microsoft/action-armttk@v1
+      - uses: microsoft/action-armttk/.github/workflows/arm-ttk@0.0.5
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          level: error
-          glob_pattern: "src/**/azuredeploy.json"
+          workingPath: ./src
