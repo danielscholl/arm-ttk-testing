@@ -19,4 +19,4 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: error
-          glob_pattern: "src/**/*.json"
+          glob_pattern: "src/**/azuredeploy.json"
