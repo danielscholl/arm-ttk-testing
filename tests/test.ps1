@@ -1,11 +1,12 @@
 # Import the required module
 Import-Module /opt/arm-ttk/arm-ttk/arm-ttk/arm-ttk.psd1
 
-# Get all JSON files in the current directory
-$jsonFiles = Get-ChildItem -Path . -Filter *.json
+# Get all JSON files in the templates directory
+$jsonFiles = Get-ChildItem -Path /workspace/templates -Filter *.json -Recurse
 
 # Loop through each JSON file and execute the command
 foreach ($file in $jsonFiles) {
+    Write-Host "Testing file: $($file.FullName)"
     # Execute the command on the current JSON file
     Test-AzTemplate -TemplatePath $file.FullName
 }
